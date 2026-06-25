@@ -1,0 +1,24 @@
+# Secrets — never commit
+.env
+**/.env
+
+# Python virtual environments, caches, build artifacts
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Companion runtime / operational state (local-only, per spec)
+companion/app/companion.db
+companion/app/corpus/
+companion/app/calibration/
+
+# Session exports & handoffs — personal learning-process artifacts (parallel to retrospectives).
+# Lose value when written for a reader. Public-facing learning narrative lives in companion/ writeups.
+session-export-*.md
+session-handoff-*.md
+
+# OS cruft
+.DS_Store
+Thumbs.db

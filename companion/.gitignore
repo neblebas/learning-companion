@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.python-version
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+# Windows-saved-as-.env-with-hidden-extension gotcha — catch these too:
+.env.txt
+*.env.txt
+**/.env.txt
+
+# Operational state — never committed (per spec-v1.md)
+state.json
+**/state.json
+calibration_set/
+bs_check_results/
+hand_labels/
+decision_logs/
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build / dist
+build/
+dist/
+*.egg
+
+# Logs
+*.log
+logs/
+
+# Week-1 framework-comparison working data — local only.
+# The public artifact for this work is companion/framework-choice.md.
+comparison/

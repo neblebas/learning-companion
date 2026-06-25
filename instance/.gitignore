@@ -1,0 +1,13 @@
+# Instance-level private working artifacts.
+# These contain rough living notes whose value depends on being unpolished.
+# See ../methodology.md#publicprivate-posture for the file-status discipline.
+
+# Parking lot — living learning notes; would lose value if sanitized for a reader.
+parking-lot.md
+
+# Operator profile — instance-specific calibration with personal positioning + pace data.
+# Sanitized templates for forkers belong in framework/, not here.
+operator-profile.md
+
+# Monthly retrospectives — honest personal reflection content; "no state lies" is harder when written for a reader.
+retrospectives/
