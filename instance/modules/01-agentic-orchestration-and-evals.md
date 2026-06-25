@@ -1,6 +1,6 @@
 # Module 1: Agentic Orchestration + Evals
 
-**Status:** Active. Weeks 1–6 complete; Week 7 (writeup and public ship) next.
+**Status:** Complete. v1 shipped publicly; all Definition-of-Done items met.
 **Start date:** _set when work begins_
 **Target ship:** ~8 weeks from start (60-80 hours)
 **Artifact:** Learning Companion v1. See `../../companion/spec-v1.md`.
@@ -13,7 +13,7 @@
 - ✅ Week 4. Judge calibration (the critical week). A 22-pair calibration set (8 genuine cold answers, 7 crafted, 7 seeds), blind-labeled on the 3-way verdict; the harness computes % exact, Cohen's κ, and seeds-caught. **Result: 82% / κ0.73 all, 88% / κ0.81 genuine, 7/7 seeds, gate met.** Key finding: the judge was non-deterministic at default temperature (the same rubric swung 88% to 75% across runs), fixed with **temperature=0** (byte-identical reruns). A "sharpen the rubric" iteration was tried and reverted, since its apparent effect was within run noise. New code: `calibrate.py`, `app/calibration/`. Deliverable: `../../companion/judge-calibration.md`. **Time: ~3 hrs** (budget 8–12; well under).
 - ✅ Week 5. RAG and semantic retrieval. Local sentence-transformers embeddings (no API key, data stays local); compared MiniLM, bge-small, and bge-base on a hand-crafted query set, all tied (P@1 7/8, Recall@3 8/8; eval **saturated** at 8 entries), so chose **all-MiniLM-L6-v2** on size and simplicity, with no lock-in (re-embedding is cheap). Whole-entry chunking; brute-force exact cosine (numpy). Wired in as `query --find`, **closing the Week-2 exact-tag gap**. Security: dropped gte-base (`trust_remote_code`) for clean models. New code: `rag.py`, `rag_eval.py`. Deliverable: `../../companion/rag-notes.md`. **Time: ~2.5 hrs** (budget 8–12; well under).
 - ✅ Week 6. Re-integration with RAG. At **log time**, each new decision's claims are cross-referenced against history (per-claim retrieval) through a **conservative tension-detector** (rigorous and additive-only; *related is not in-tension*, validated including a subtle false-positive case). A genuine tension is surfaced **immediately** and **spawned as its own tracked claim** (dedup via sorted-pair id; it climbs the tiers and is probed at review like any claim). *Firing point corrected from review-time to log-time, to catch the contradiction as it is introduced (the spot-check principle).* Added **retry/backoff** to all LLM clients after a sustained API 529 (deeper resilience goes to Module 5). Honest note: the compressed timeline meant no four-weeks-of-real-use feedback, so deferred-feature integration was substituted. Also built the **single follow-up loop** (deferred from Week 3): a `partial` answer gets one targeted follow-up at the specific gap, then the same calibrated judge re-scores the combined response (verified: partial to solid on supplying the missing piece). New: `rag.related_claims`, `bschecker.detect_tension`, `bschecker.followup_question`, `store.spawn_tension_claim`. Deliverable: `../../companion/v1-integration-notes.md`. **Carried forward:** my own first live cross-referenced `check` (the DoD real-use session). **Time: ~1.5 hrs** (budget 6–10; well under).
-- ⬜ Weeks 7-8. See the weekly cadence below.
+- ✅ Week 7. All writeups polished and de-telled, repo flipped public (MIT) at https://github.com/neblebas/learning-companion, module retrospective written, launch post published. Week 8 buffer not needed.
 
 ---
 
@@ -183,13 +183,13 @@ Be explicit about these gaps when discussing the artifact. The credibility comes
 
 All of these, or the module is not complete:
 
-- [ ] Companion v1 in active use by me: at least 5 real decisions logged, at least 2 BS-check sessions completed.
-- [ ] Public GitHub repo with README, architecture writeup, framework-choice writeup, calibration writeup.
-- [ ] Calibrated judge with a documented agreement metric (≥80% exact or κ ≥ 0.6).
-- [ ] LinkedIn or blog post published.
-- [ ] Module retrospective written in `../retrospectives/`.
-- [ ] BS-check questions locked and the first one scheduled.
-- [ ] Companion's first real-use BS-check session completed.
+- [x] Companion v1 in active use by me: at least 5 real decisions logged, at least 2 BS-check sessions completed.
+- [x] Public GitHub repo with README, architecture writeup, framework-choice writeup, calibration writeup.
+- [x] Calibrated judge with a documented agreement metric (≥80% exact or κ ≥ 0.6).
+- [x] LinkedIn or blog post published.
+- [x] Module retrospective written in `../retrospectives/`.
+- [x] BS-check questions locked and the first one scheduled.
+- [x] Companion's first real-use BS-check session completed.
 
 ---
 

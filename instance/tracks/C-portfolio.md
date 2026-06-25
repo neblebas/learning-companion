@@ -6,7 +6,7 @@ A record of artifacts that have actually shipped. An item enters this ledger onl
 
 | Date | Artifact | Location | Module |
 |---|---|---|---|
-| 2026-06 | Learning Companion v1, a multi-agent build-to-learn system | [`../../companion/`](../../companion/) | 1 |
+| 2026-06 | Learning Companion v1, a multi-agent build-to-learn system | [code](../../companion/) · [public repo](https://github.com/neblebas/learning-companion) | 1 |
 
 ## Public writeups
 
@@ -20,7 +20,6 @@ A record of artifacts that have actually shipped. An item enters this ledger onl
 
 ## Queued
 
-- Public launch writeup for the companion v1.
 - Companion v1.1: `ingest` command for extracting and registering claims from external transcripts.
 - Module 2 deliverable: one-page foundations reference; LinkedIn posts as topics surface naturally.
 - Module 3 deliverable: AI Governance audit document applying NIST AI RMF and EU AI Act to the companion.
